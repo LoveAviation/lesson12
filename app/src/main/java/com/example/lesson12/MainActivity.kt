@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
     private val KEY2 = "keyForText"
     private var saveState : String = "error"
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -55,6 +56,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun loading(){
+        binding.editText.isEnabled = false
         binding.button.isEnabled = false
         binding.loadingBar.visibility = View.VISIBLE
         saveState = "loading"
@@ -67,8 +69,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun success(){
+        binding.editText.isEnabled= true
         binding.text.text = "По вашему запросу: ${binding.editText.text}, ничего не найдено."
-        binding.button.isEnabled = false
+        binding.button.isEnabled = true
         binding.loadingBar.visibility = View.GONE
         saveState = "success"
     }
